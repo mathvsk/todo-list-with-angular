@@ -31,4 +31,9 @@ export class ListComponent {
 
     return this.#setListItems.set(this.#parseItems());
   }
+
+  deleteAllItems() {
+    localStorage.removeItem('@angular-todo-list');
+    return this.#setListItems.set(this.#parseItems());
+  }
 }
