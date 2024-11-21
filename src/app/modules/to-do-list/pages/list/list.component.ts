@@ -38,4 +38,14 @@ export class ListComponent {
     localStorage.removeItem('@angular-todo-list');
     return this.#setListItems.set(this.#parseItems());
   }
+
+  listItemsStage(value: 'pending' | 'completed'): IListItem[] {
+    return this.getListItems().filter((item) =>  {
+      if (value === 'pending') {
+        return !item.checked;
+      } else {
+        return item.checked;
+      }
+    });
+  }
 }
