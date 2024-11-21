@@ -9,11 +9,11 @@ import { IListItem } from '../interface/IListItem-interface';
   styleUrl: './input-add-item.component.scss'
 })
 export class InputAddItemComponent {
-  @Output() public outputItemList = new EventEmitter<IListItem>();
+  @Output() public outputAddItemListItem = new EventEmitter<IListItem>();
   @ViewChild(("inputText")) public inputText!: ElementRef;
 
   focusAndAdditem(value: string) {    
-    this.outputItemList.emit({
+    this.outputAddItemListItem.emit({
       id: `ID ${new Date().getTime()}`,
       checked: false,
       value
