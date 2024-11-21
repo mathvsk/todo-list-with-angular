@@ -12,6 +12,7 @@
     } @else {
         <app-input-add-item 
             (outputAddItemListItem)="addItemListItem($event)"
+            [inputListItems]="getListItems()"
         />
     }
 </div>

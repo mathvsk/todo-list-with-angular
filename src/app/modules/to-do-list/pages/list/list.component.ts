@@ -16,7 +16,7 @@ export class ListComponent {
     this.addItem.set(false);
   }
 
-  #setListItems = signal<IListItem[]>([this.#parseItems()]);
+  #setListItems = signal<IListItem[]>(this.#parseItems());
   public getListItems = this.#setListItems.asReadonly();
 
   #parseItems() {
@@ -24,6 +24,11 @@ export class ListComponent {
   }
 
   addItemListItem(value: IListItem) {
-    localStorage.setItem('@angular-todo-list', JSON.stringify(value));
+    localStorage.setItem(
+      '@angular-todo-list', 
+      JSON.stringify([...this.#setListItems(), value])
+    );
+
+    return this.#setListItems.set(this.#parseItems());
   }
 }
