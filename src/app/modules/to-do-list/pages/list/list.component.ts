@@ -48,4 +48,20 @@ export class ListComponent {
       }
     });
   }
+
+  updateItemCheckbox(item: { id: string; checked: boolean; }) {
+    this.#setListItems.update((oldValue) => {
+      oldValue.filter((oldItem) => {
+        if (oldItem.id === item.id) {
+          oldItem.checked = item.checked;
+        }
+
+        return oldItem;
+      });
+
+      return oldValue;
+    })
+
+    return localStorage.setItem('@angular-todo-list', JSON.stringify(this.#setListItems()));
+  }
 }
