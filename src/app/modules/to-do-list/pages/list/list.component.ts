@@ -6,6 +6,7 @@ import { InputListItemComponent } from "../../components/input-list-item/input-l
 import { IListItem } from '../../interface/IListItem-interface';
 
 import { ELocalStorage } from '../../enum/ELocalStorage.enum';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -41,8 +42,22 @@ export class ListComponent {
   }
 
   deleteAllItems() {
-    localStorage.removeItem(ELocalStorage.AngularToDoList);
-    return this.#setListItems.set(this.#parseItems());
+    Swal.fire({
+      title: "Você tem certeza que deseja deletar todos os itens?",
+      text: "Você não poderá reverter isso!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, deletar!"
+    }).then((result) => {
+      if (!result.isConfirmed) {
+        return;
+      }
+      
+      localStorage.removeItem(ELocalStorage.AngularToDoList);
+      return this.#setListItems.set(this.#parseItems());
+    })
   }
 
   listItemsStage(value: 'pending' | 'completed'): IListItem[] {

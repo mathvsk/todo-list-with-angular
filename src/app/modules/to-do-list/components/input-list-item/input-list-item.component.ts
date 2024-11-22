@@ -1,5 +1,6 @@
 import { Component, EventEmitter, input, output } from '@angular/core';
 import { IListItem } from '../../interface/IListItem-interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-input-list-item',
@@ -23,6 +24,20 @@ export class InputListItemComponent {
   }
 
   public deleteItem(id: string) {
-    this.outputDeleteItem.emit(id);
+    Swal.fire({
+      title: "Você tem certeza que deseja deletar este item?",
+      text: "Você não poderá reverter isso!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, deletar!"
+    }).then((result) => {
+      if (!result.isConfirmed) {
+        return;
+      }
+
+      this.outputDeleteItem.emit(id);
+    })
   }
 }
