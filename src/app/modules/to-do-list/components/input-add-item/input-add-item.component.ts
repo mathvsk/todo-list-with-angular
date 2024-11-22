@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { IListItem } from '../interface/IListItem-interface';
+import { IListItem } from '../../interface/IListItem-interface';
 import { NgClass } from '@angular/common';
 
 @Component({

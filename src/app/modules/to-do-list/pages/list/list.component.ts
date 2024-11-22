@@ -3,7 +3,7 @@ import { Component, signal } from '@angular/core';
 import { InputAddItemComponent } from "../../components/input-add-item/input-add-item.component";
 import { InputListItemComponent } from "../../components/input-list-item/input-list-item.component";
 
-import { IListItem } from '../../components/interface/IListItem-interface';
+import { IListItem } from '../../interface/IListItem-interface';
 @Component({
   selector: 'app-list',
   standalone: true,
