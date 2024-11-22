@@ -4,6 +4,8 @@ import { InputAddItemComponent } from "../../components/input-add-item/input-add
 import { InputListItemComponent } from "../../components/input-list-item/input-list-item.component";
 
 import { IListItem } from '../../interface/IListItem-interface';
+
+import { ELocalStorage } from '../../enum/ELocalStorage.enum';
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -21,13 +23,17 @@ export class ListComponent {
   #setListItems = signal<IListItem[]>(this.#parseItems());
   public getListItems = this.#setListItems.asReadonly();
 
+  #updateLocalStorage() {
+    localStorage.setItem(ELocalStorage.AngularToDoList, JSON.stringify(this.#setListItems()));
+  }
+
   #parseItems() {
-    return JSON.parse(localStorage.getItem('@angular-todo-list') || '[]');
+    return JSON.parse(localStorage.getItem(ELocalStorage.AngularToDoList) || '[]');
   }
 
   addItemListItem(value: IListItem) {
     localStorage.setItem(
-      '@angular-todo-list', 
+      ELocalStorage.AngularToDoList, 
       JSON.stringify([...this.#setListItems(), value])
     );
 
@@ -35,7 +41,7 @@ export class ListComponent {
   }
 
   deleteAllItems() {
-    localStorage.removeItem('@angular-todo-list');
+    localStorage.removeItem(ELocalStorage.AngularToDoList);
     return this.#setListItems.set(this.#parseItems());
   }
 
@@ -62,7 +68,7 @@ export class ListComponent {
       return oldValue;
     })
 
-    return localStorage.setItem('@angular-todo-list', JSON.stringify(this.#setListItems()));
+    this.#updateLocalStorage();
   }
 
   updateItemText(item: { id: string; value: string; }) {
@@ -78,7 +84,7 @@ export class ListComponent {
       return oldValue;
     })
 
-    return localStorage.setItem('@angular-todo-list', JSON.stringify(this.#setListItems()));
+    this.#updateLocalStorage();
   }
 
   deleteItem(itemId: string) {
@@ -86,6 +92,6 @@ export class ListComponent {
       return oldValue.filter((oldItem) => oldItem.id !== itemId);
     });
 
-    return localStorage.setItem('@angular-todo-list', JSON.stringify(this.#setListItems()));
+    this.#updateLocalStorage();
   }
 }
