@@ -64,4 +64,28 @@ export class ListComponent {
 
     return localStorage.setItem('@angular-todo-list', JSON.stringify(this.#setListItems()));
   }
+
+  updateItemText(item: { id: string; value: string; }) {
+    this.#setListItems.update((oldValue) => {
+      oldValue.filter((oldItem) => {
+        if (oldItem.id === item.id) {
+          oldItem.value = item.value;
+        }
+
+        return oldItem;
+      });
+
+      return oldValue;
+    })
+
+    return localStorage.setItem('@angular-todo-list', JSON.stringify(this.#setListItems()));
+  }
+
+  deleteItem(itemId: string) {
+    this.#setListItems.update((oldValue) => {
+      return oldValue.filter((oldItem) => oldItem.id !== itemId);
+    });
+
+    return localStorage.setItem('@angular-todo-list', JSON.stringify(this.#setListItems()));
+  }
 }
