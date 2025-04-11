@@ -1,27 +1,40 @@
-# TodoListWithAngular
+# Gerenciador de tarefas
+![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+![Static Badge](https://img.shields.io/badge/MIT-maker?style=for-the-badge&label=License&labelColor=%23303030&color=%23808080)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
 
-## Development server
+<img src=".github/projeto.gif"  >
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Sobre o projeto
 
-## Code scaffolding
+Esta aplicação demonstra as melhores práticas no desenvolvimento em Angular enquanto oferece uma interface limpa e intuitiva para gerenciar tarefas diárias.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Funcionalidades
 
-## Build
+- **Gerenciamento de Tarefas** - Crie, edite e exclua tarefas com facilidade
+- **Acompanhamento de Status** - Marque tarefas como concluídas/incompletas com separação visual
+- **Persistência de Dados** - Tarefas são automaticamente salvas no armazenamento local
+- **Design Responsivo** - Funciona perfeitamente em dispositivos móveis e desktop
+- **Diálogos de Confirmação** - Previne exclusão acidental de tarefas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Destaques Técnicos
 
-## Running unit tests
+- Construído com **Angular 18** usando componentes standalone
+- Gerenciamento de estado com a **API de Signals** do Angular
+- Integração com **Local Storage** para persistência de dados
+- Arquitetura modular com clara separação de responsabilidades
+- Estilização responsiva com **SCSS**
+- Confirmações interativas com **SweetAlert2**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Como Executar o Projeto
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Clone o repositório
+2. Instale as dependências:
+    ```bash
+    npm install
+    ```
+3. Execute o servidor de desenvolvimento:
+    ```bash
+    npm start
+    ```
+4. Abra seu navegador em `http://localhost:4200`
